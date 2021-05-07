@@ -1,50 +1,43 @@
 import React, { Component } from 'react';
+import AddBar from './addBar';
 import Habit from './habit';
 
 class Habits extends Component {
-    state = {
-        habits: [
-            { id: 1, name: 'Reading', count: 0 },
-            { id: 2, name: 'Coding', count: 0 },
-            { id: 3, name: 'Raning', count: 0 },
-        ],
-    };
-
     handleIncrement = habit => {
-        const habits = [...this.state.habits];
-        const index = habits.indexOf(habit);
-        habits[index].count++;
-        this.setState({ habits })
+        this.props.onIncrement(habit);
     };
 
     handleDecrement = habit => {
-        const habits = [...this.state.habits];
-        const index = habits.indexOf(habit);
-        const count = habits[index].count - 1;
-        habits[index].count = count < 0 ? 0 : count;
-        this.setState({ habits })
+        this.props.onDecrement(habit);
     };
 
     handleDelete = habit => {
-        /* 내가 생각한 코드
-        const toBeDeleted = document.querySelector(".habit");
-        toBeDeleted.remove(); */
-        const habits = this.state.habits.filter(item => item.id !== habit.id);
-        this.setState({ habits });
+        this.props.onDelete(habit);
+    };
+
+    handleAdd = name => {
+        this.props.onAdd(name);
     };
 
     render() {
         return (
-            <ul>
-                {this.state.habits.map(habit => (
-                    <Habit
-                        key={habit.id}
-                        habit={habit}
-                        onIncrement={this.handleIncrement}
-                        onDecrement={this.handleDecrement}
-                        onDelete={this.handleDelete} />
-                ))}
-            </ul>
+            <>
+                <AddBar onAdd={this.handleAdd} />
+                <ul>
+                    {this.props.habit.map(habit => (
+                        <Habit
+                            key={habit.id}
+                            habit={habit}
+                            onIncrement={this.handleIncrement}
+                            onDecrement={this.handleDecrement}
+                            onDelete={this.handleDelete} />
+                    ))}
+                </ul>
+                <button
+                    className='habit-reset'
+                    onClick={this.props.onReset}>
+                    All Reset</button>
+            </>
         );
     }
 }

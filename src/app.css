@@ -43,3 +43,57 @@ button {
   font-size: 2rem;
   color: rgb(182, 98, 137);
 }
+
+.header{
+  display: flex;
+  align-items: center;
+  background-color: rgb(172, 223, 223);
+  height: 7em;
+}
+
+.header-title{
+  color: white;
+  font-size: 2.7em;
+  font-weight: 600;
+}
+
+.total-habit-count{
+  display: inline-block;
+  text-align: center;
+  font-size: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  margin-left: 0.2em;
+  background-color: pink;
+  color: white;
+  border-radius: 50%;
+}
+
+form{
+  display: flex;
+  align-items: flex-end;
+}
+
+.addBar{
+  font-size: 1.6rem;
+  margin: 2em 1em 0em 1em;
+
+}
+
+.addBnt{
+  height: 2.8em;
+  width: 4em;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: white;
+  background-color: pink;
+
+}
+
+.header-logo{
+  margin-left: 0.8em;
+  margin-right: 0.2em;
+  font-size: 2.3em;
+  color: palevioletred;
+}
